@@ -11,6 +11,8 @@ namespace Bankomat_2
             Console.ReadLine();
 
             Bank.TheBank();
+            Console.WriteLine("Testing testing");
+            Console.ReadLine();
         }
     }
 }
