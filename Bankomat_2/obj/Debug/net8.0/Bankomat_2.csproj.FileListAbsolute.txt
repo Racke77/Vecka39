@@ -1,0 +1,15 @@
+D:\coding\OOP\Vecka39\Bankomat_2\bin\Debug\net8.0\Bankomat_2.exe
+D:\coding\OOP\Vecka39\Bankomat_2\bin\Debug\net8.0\Bankomat_2.deps.json
+D:\coding\OOP\Vecka39\Bankomat_2\bin\Debug\net8.0\Bankomat_2.runtimeconfig.json
+D:\coding\OOP\Vecka39\Bankomat_2\bin\Debug\net8.0\Bankomat_2.dll
+D:\coding\OOP\Vecka39\Bankomat_2\bin\Debug\net8.0\Bankomat_2.pdb
+D:\coding\OOP\Vecka39\Bankomat_2\obj\Debug\net8.0\Bankomat_2.GeneratedMSBuildEditorConfig.editorconfig
+D:\coding\OOP\Vecka39\Bankomat_2\obj\Debug\net8.0\Bankomat_2.AssemblyInfoInputs.cache
+D:\coding\OOP\Vecka39\Bankomat_2\obj\Debug\net8.0\Bankomat_2.AssemblyInfo.cs
+D:\coding\OOP\Vecka39\Bankomat_2\obj\Debug\net8.0\Bankomat_2.csproj.CoreCompileInputs.cache
+D:\coding\OOP\Vecka39\Bankomat_2\obj\Debug\net8.0\Bankomat_2.sourcelink.json
+D:\coding\OOP\Vecka39\Bankomat_2\obj\Debug\net8.0\Bankomat_2.dll
+D:\coding\OOP\Vecka39\Bankomat_2\obj\Debug\net8.0\refint\Bankomat_2.dll
+D:\coding\OOP\Vecka39\Bankomat_2\obj\Debug\net8.0\Bankomat_2.pdb
+D:\coding\OOP\Vecka39\Bankomat_2\obj\Debug\net8.0\Bankomat_2.genruntimeconfig.cache
+D:\coding\OOP\Vecka39\Bankomat_2\obj\Debug\net8.0\ref\Bankomat_2.dll

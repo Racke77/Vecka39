@@ -1,4 +1,6 @@
-﻿namespace Bankomat_2
+﻿using System;
+
+namespace Bankomat_2
 {
     public class Menu
     {
@@ -6,9 +8,18 @@
         {
             List<string> actionOptions = new List<string>()
             {
-                "Display all", "View account", "Deposit to account", "Withdraw from account", "Add new account", "Delete account", "Quit"
+                "Display all", "View account", "Find account" ,"Deposit to account", "Withdraw from account", "Add new account", "Delete account", "Quit"
             };
             return MenuSelection(actionOptions);
+        }
+        public static int DisplayFoundAccount(List<BankAccount> bankAccounts, int indexNr)
+        {
+            Console.Clear();
+            List<string> menuOptions = new List<string>()
+            {
+                "Return", "Deposit to account", "Withdraw from account", "Delete account"
+            };
+            return MenuSelection2(menuOptions, bankAccounts, indexNr);
         }
         public static int MenuSelection(List<string> menuOptions)
         {
@@ -45,6 +56,49 @@
                 }
 
                 //press ENTER to send back info about which menu-option was selected
+                else if (keyPressed.Key == ConsoleKey.Enter)
+                {
+                    return menuSelect;
+                }
+            }
+        }
+        public static int MenuSelection2(List<string> menuOptions, List<BankAccount> bankAccounts, int indexNr)
+        {
+            int menuSelect = 0;
+            while (true)
+            {
+                Console.Clear();
+                Console.CursorVisible = false;
+                Console.WriteLine(bankAccounts[indexNr].AccountNr + bankAccounts[indexNr].AccountMoney.ToString().PadLeft(20) + " SEK");
+                Console.WriteLine();
+                Console.WriteLine();
+                for (int i = 0; i < menuOptions.Count; i++)
+                {
+                    //printing out the selected menu
+                    if (i == menuSelect)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine(menuOptions[menuSelect]);
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        Console.WriteLine(menuOptions[i]);
+                    }
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                }
+
+                var keyPressed = Console.ReadKey();
+                //movement
+                if (keyPressed.Key == ConsoleKey.DownArrow && menuSelect != menuOptions.Count - 1)
+                {
+                    menuSelect++;
+                }
+                else if (keyPressed.Key == ConsoleKey.UpArrow && menuSelect >= 1)
+                {
+                    menuSelect--;
+                }
+                //select
                 else if (keyPressed.Key == ConsoleKey.Enter)
                 {
                     return menuSelect;

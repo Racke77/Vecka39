@@ -11,12 +11,8 @@ namespace Bankomat_2
             Console.ReadLine();
 
             Bank.TheBank();
-            Console.WriteLine("Testing testing");
-            Console.ReadLine();
         }
     }
 }
-//Sorter? -> Sort accounts based on: ID or MONEY
-//Display -> Show only accounts within X and Y (money)
-
-
+//Sorter? -> Sort accounts based on: ID or MONEY -> Not on this assignment (not yet)
+//Display -> Show only accounts within X and Y (money) -> Basically just a sorter (not yet)

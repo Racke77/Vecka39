@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bankomat_2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0d96ffc39a71fa5269397ec2d1fd0982d56a44e9")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bankomat_2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bankomat_2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

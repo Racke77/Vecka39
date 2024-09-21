@@ -65,22 +65,52 @@ namespace Bankomat_2
                         Console.ReadLine();
                         break;
                     case 2:
+                        //Find account
+                        Console.CursorVisible = true;
+                        int indexNr = Search.LinearSearch(bankAccounts, Input.StringInputCatch());
+                        if (indexNr < 0)
+                        {
+                            Console.WriteLine("There is no account by that name.");
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            //do something with it?
+                            menuSelected = Menu.DisplayFoundAccount(bankAccounts, indexNr);
+                            switch (menuSelected)
+                            {
+                                case 0: //Return
+                                    break;
+                                case 1: //Add money
+                                    AccountEdit.MoneyEdits(1, "deposit", bankAccounts, indexNr);
+                                    break;
+                                case 2: //Take money
+                                    AccountEdit.MoneyEdits(-1, "withdraw", bankAccounts, indexNr);
+                                    break;
+                                case 3: //Delete account
+                                    Console.WriteLine();
+                                    allAccountNames = AccountEdit.DeleteAccount(allAccountNames, bankAccounts, indexNr);
+                                    break;
+                            }
+                        }
+                        break;
+                    case 3:
                         //Add to account -> open a menu for account-names (send Add)
                         AccountEdit.MoneyEdits(1, "deposit", bankAccounts, Menu.MenuSelection(allAccountNames));
                         break;
-                    case 3:
+                    case 4:
                         //Remove from account -> open a menu for account-names (send Remove)
                         AccountEdit.MoneyEdits(-1, "withdraw", bankAccounts, Menu.MenuSelection(allAccountNames));
                         break;
-                    case 4:
+                    case 5:
                         //Add new account -> 
                         allAccountNames = AccountEdit.CreateNewAccount(bankAccounts, allAccountNames);
                         break;
-                    case 5:
-                        //Delete account ->
-                        allAccountNames = AccountEdit.DeleteAccount(allAccountNames, bankAccounts);
-                        break;
                     case 6:
+                        //Delete account ->
+                        allAccountNames = AccountEdit.DeleteAccount(allAccountNames, bankAccounts, Menu.MenuSelection(allAccountNames));
+                        break;
+                    case 7:
                         //Quit -> 
                         SaveExit.SaveAndExit(bankAccounts);
                         break;
