@@ -64,6 +64,7 @@ namespace Bankomat_2
         //DELETE account
         public static List<string> DeleteAccount(List<string> allAccountNames, List<BankAccount> bankAccounts, int menuSelect)
         {
+            Console.WriteLine();
             Console.WriteLine("Are you sure you want to delete this account?");
             Console.WriteLine("y/n: ");
             Console.CursorVisible = true;            
