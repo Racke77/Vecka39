@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Bankomat Assignment/1.0.0": {
+        "runtime": {
+          "Bankomat Assignment.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Bankomat Assignment/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
