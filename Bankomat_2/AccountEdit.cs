@@ -75,5 +75,26 @@ namespace Bankomat_2
             }
             return allAccountNames;
         }
+        public static List<string> EditSelectedAccount(List<BankAccount> bankAccounts, int indexNr, List<string> allAccountNames)
+        {
+
+            int menuSelected = Menu.DisplayFoundAccount(bankAccounts, indexNr); 
+            switch (menuSelected)
+            {
+                case 0: //Return
+                    break;
+                case 1: //Add money
+                    MoneyEdits(1, "deposit", bankAccounts, indexNr);
+                    break;
+                case 2: //Take money
+                    MoneyEdits(-1, "withdraw", bankAccounts, indexNr);
+                    break;
+                case 3: //Delete account
+                    Console.WriteLine();
+                    allAccountNames = DeleteAccount(allAccountNames, bankAccounts, indexNr);
+                    break;
+            }
+            return allAccountNames;
+        }
     }
 }

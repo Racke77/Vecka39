@@ -59,10 +59,7 @@ namespace Bankomat_2
                     case 1:
                         //View account -> open a menu for account-names -> open the account
                         menuSelected = Menu.MenuSelection(allAccountNames);
-                        Console.Clear();
-
-                        Console.Write(bankAccounts[menuSelected].AccountNr + bankAccounts[menuSelected].AccountMoney.ToString().PadLeft(20) + " SEK");
-                        Console.ReadLine();
+                        allAccountNames = AccountEdit.EditSelectedAccount(bankAccounts, menuSelected, allAccountNames);
                         break;
                     case 2:
                         //Find account
@@ -76,22 +73,7 @@ namespace Bankomat_2
                         else
                         {
                             //do something with it?
-                            menuSelected = Menu.DisplayFoundAccount(bankAccounts, indexNr);
-                            switch (menuSelected)
-                            {
-                                case 0: //Return
-                                    break;
-                                case 1: //Add money
-                                    AccountEdit.MoneyEdits(1, "deposit", bankAccounts, indexNr);
-                                    break;
-                                case 2: //Take money
-                                    AccountEdit.MoneyEdits(-1, "withdraw", bankAccounts, indexNr);
-                                    break;
-                                case 3: //Delete account
-                                    Console.WriteLine();
-                                    allAccountNames = AccountEdit.DeleteAccount(allAccountNames, bankAccounts, indexNr);
-                                    break;
-                            }
+                            allAccountNames = AccountEdit.EditSelectedAccount(bankAccounts, indexNr, allAccountNames);
                         }
                         break;
                     case 3:

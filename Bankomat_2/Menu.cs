@@ -17,7 +17,7 @@ namespace Bankomat_2
             Console.Clear();
             List<string> menuOptions = new List<string>()
             {
-                "Return", "Deposit to account", "Withdraw from account", "Delete account"
+                "Return", "Deposit", "Withdraw", "Delete account"
             };
             return MenuSelection2(menuOptions, bankAccounts, indexNr);
         }
@@ -34,14 +34,17 @@ namespace Bankomat_2
                     //printing out the selected menu
                     if (i == menuSelect)
                     {
-                        Console.WriteLine(menuOptions[menuSelect] + " <---");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine(menuOptions[menuSelect]);
                     }
                     //printing out all other options
                     else
                     {
+                        Console.ForegroundColor = ConsoleColor.Gray;
                         Console.WriteLine(menuOptions[i]);
                     }
                 }
+                Console.ForegroundColor = ConsoleColor.Gray;
                 var keyPressed = Console.ReadKey();
 
                 //going down, one smaller than the full menu
@@ -78,23 +81,23 @@ namespace Bankomat_2
                     if (i == menuSelect)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine(menuOptions[menuSelect]);
+                        Console.Write(menuOptions[menuSelect] + "  ");
                     }
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.Gray;
-                        Console.WriteLine(menuOptions[i]);
+                        Console.Write(menuOptions[i] + "  ");
                     }
                     Console.ForegroundColor = ConsoleColor.Gray;
                 }
 
                 var keyPressed = Console.ReadKey();
                 //movement
-                if (keyPressed.Key == ConsoleKey.DownArrow && menuSelect != menuOptions.Count - 1)
+                if (keyPressed.Key == ConsoleKey.RightArrow && menuSelect != menuOptions.Count - 1)
                 {
                     menuSelect++;
                 }
-                else if (keyPressed.Key == ConsoleKey.UpArrow && menuSelect >= 1)
+                else if (keyPressed.Key == ConsoleKey.LeftArrow && menuSelect >= 1)
                 {
                     menuSelect--;
                 }
