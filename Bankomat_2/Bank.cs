@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Globalization;
 
 namespace Bankomat_2
 {
@@ -38,11 +39,7 @@ namespace Bankomat_2
                 switch (menuSelected)
                 {
                     case 0: //Display all accounts
-                        for (int i = 0; i < bankAccounts.Count; i++)
-                        {
-                            Console.Write(bankAccounts[i].AccountNr.PadRight(10) + bankAccounts[i].AccountMoney.ToString().PadLeft(20) + " SEK");
-                            Console.WriteLine();
-                        }
+                        Display.DisplayAllMethod(bankAccounts);
                         Console.ReadLine();
                         break;
                     case 1: //View account -> open a menu for account-names -> open the account

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace Bankomat_2
 {
@@ -72,8 +73,7 @@ namespace Bankomat_2
             {
                 Console.Clear();
                 Console.CursorVisible = false;
-                Console.WriteLine(bankAccounts[indexNr].AccountNr.PadRight(10) + bankAccounts[indexNr].AccountMoney.ToString().PadLeft(20) + " SEK");
-                Console.WriteLine();
+                Display.DisplaySingleMethod(bankAccounts, indexNr);
                 Console.WriteLine();
                 for (int i = 0; i < menuOptions.Count; i++)
                 {                    
