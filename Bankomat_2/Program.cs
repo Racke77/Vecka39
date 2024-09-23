@@ -7,12 +7,10 @@ namespace Bankomat_2
         static void Main(string[] args)
         {
             Console.CursorVisible = false;
-            Console.WriteLine("Welcome to The Bank");
+            Console.WriteLine("Welcome to The Bank"); //splash-screen
             Console.ReadLine();
 
-            Bank.TheBank();
+            Bank.TheBank(); //start the actual bank
         }
     }
 }
-//Sorter? -> Sort accounts based on: ID or MONEY -> Not on this assignment (not yet)
-//Display -> Show only accounts within X and Y (money) -> Basically just a sorter (not yet)

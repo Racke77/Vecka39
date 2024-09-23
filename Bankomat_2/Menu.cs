@@ -21,6 +21,7 @@ namespace Bankomat_2
             };
             return MenuSelection2(menuOptions, bankAccounts, indexNr);
         }
+        //up-down menu
         public static int MenuSelection(List<string> menuOptions)
         {
             int menuSelect = 0;
@@ -30,15 +31,13 @@ namespace Bankomat_2
                 Console.CursorVisible = false;
                 //printing out the full menu
                 for (int i = 0; i < menuOptions.Count; i++)
-                {
-                    //printing out the selected menu
-                    if (i == menuSelect)
+                {                    
+                    if (i == menuSelect) //printing out the selected menu
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine(menuOptions[menuSelect]);
                     }
-                    //printing out all other options
-                    else
+                    else //printing out all other options
                     {
                         Console.ForegroundColor = ConsoleColor.Gray;
                         Console.WriteLine(menuOptions[i]);
@@ -65,6 +64,7 @@ namespace Bankomat_2
                 }
             }
         }
+        //side-to-side menu
         public static int MenuSelection2(List<string> menuOptions, List<BankAccount> bankAccounts, int indexNr)
         {
             int menuSelect = 0;
@@ -76,14 +76,13 @@ namespace Bankomat_2
                 Console.WriteLine();
                 Console.WriteLine();
                 for (int i = 0; i < menuOptions.Count; i++)
-                {
-                    //printing out the selected menu
-                    if (i == menuSelect)
+                {                    
+                    if (i == menuSelect) //printing out the selected menu
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.Write(menuOptions[menuSelect] + "  ");
                     }
-                    else
+                    else //printing out all other options
                     {
                         Console.ForegroundColor = ConsoleColor.Gray;
                         Console.Write(menuOptions[i] + "  ");

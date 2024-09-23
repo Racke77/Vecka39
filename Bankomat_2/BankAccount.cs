@@ -17,7 +17,6 @@ namespace Bankomat_2
         {
             get { return accountNr; }
         }
-
         private int accountMoney; //NEVER CALL THIS "moneyAccount" (Deserialize hates that)
         public int AccountMoney
         {

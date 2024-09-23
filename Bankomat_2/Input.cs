@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 namespace Bankomat_2
 {
     internal class Input
-    {
-        //method for try-catching int-inputs
-        public static int NumberInputCatch()
+    {        
+        public static int NumberInputCatch() //method for try-catching int-inputs
         {
             while (true)
             {
@@ -17,7 +16,6 @@ namespace Bankomat_2
                 try
                 {
                     int x = Convert.ToInt32(Console.ReadLine());
-
                     if (x < 0)
                     {
                         Console.WriteLine("You can't use negative numbers");
@@ -34,7 +32,7 @@ namespace Bankomat_2
                 }
             }
         }
-        public static string StringInputCatch()
+        public static string StringInputCatch() //method for checking string-length
         {
             int nameLength = 3;
             while (true)
@@ -52,18 +50,18 @@ namespace Bankomat_2
                 }
             }
         }
-        public static int YesNoInput()
+        public static bool YesNoInput() //input yes/no bool
         {
             while (true)
             {
                 Console.CursorVisible = true;
                 if (Console.ReadLine() == "y" || Console.ReadLine() == "yes")
                 {
-                    return 1;
+                    return true;
                 }
                 else
                 {
-                    return 0;
+                    return false;
                 }
             }
         }

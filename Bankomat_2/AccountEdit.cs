@@ -11,12 +11,10 @@ namespace Bankomat_2
     {
         //method for creating all accounts at the start
         public static List<BankAccount> CreateAllAccounts(List<string> accountNames)
-        {
-            //create an array to hold all of the objects
-            List<BankAccount> accountNr = new List<BankAccount>();
+        {            
+            List<BankAccount> accountNr = new List<BankAccount>(); //create an array to hold all of the objects
 
-            //create a random amount of initial money
-            Random randomMoney = new Random();
+            Random randomMoney = new Random(); //create a random amount of initial money
 
             //go through the entire list and create objects for each installment of the array + random money
             foreach (string accountName in accountNames)
@@ -30,7 +28,6 @@ namespace Bankomat_2
         {
             Console.Clear();
             Console.WriteLine($"How much money do you want to {question}?");
-
             int moneyEdit = Input.NumberInputCatch();
 
             //turning a "normal number" into either positive or negative (add/remove)
@@ -43,7 +40,6 @@ namespace Bankomat_2
                 Console.ReadLine();
                 return;
             }
-
             //after checking to make sure that nothing goes wrong -> use method for changing account-money
             accountNr[whichAccount].SetMoney(moneyEdit);
         }
@@ -68,9 +64,8 @@ namespace Bankomat_2
             Console.WriteLine("Are you sure you want to delete this account?");
             Console.WriteLine("y/n: ");
             Console.CursorVisible = true;            
-            if (Input.YesNoInput() > 0)
-            {
-                //delete account
+            if (Input.YesNoInput() == true) //"yes" -> delete account
+            {                
                 bankAccounts.RemoveAt(menuSelect);
                 allAccountNames.RemoveAt(menuSelect);
             }
