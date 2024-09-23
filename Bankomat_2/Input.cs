@@ -45,7 +45,6 @@ namespace Bankomat_2
                 }
                 else
                 {
-                    Console.CursorVisible = false;
                     Console.WriteLine($"Please make your account-name at least {nameLength} characters long.");
                 }
             }
