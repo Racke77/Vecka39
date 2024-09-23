@@ -16,11 +16,14 @@ namespace Bankomat_2
 
             Random randomMoney = new Random(); //create a random amount of initial money
 
+            List<BankAccountJsonDto> bankAccountJsonDtos = new List<BankAccountJsonDto>();
             //go through the entire list and create objects for each installment of the array + random money
-            foreach (string accountName in accountNames)
+            foreach (var accountName in accountNames)
             {
-                accountNr.Add(new BankAccount(accountName, randomMoney.Next(100, 10001)));
+                BankAccountJsonDto bankAccount = BankAccountJsonDto.FromBankAccount(accountName, randomMoney.Next(100, 10001));
+                bankAccountJsonDtos.Add(bankAccount);
             }
+
             return accountNr;
         }
         //method for editing the money on the accounts
@@ -53,7 +56,8 @@ namespace Bankomat_2
             int accountMoney = Input.NumberInputCatch();
             Console.CursorVisible = false;
 
-            bankAccounts.Add(new BankAccount(accountName, accountMoney));
+
+            bankAccounts.Add(new BankAccount test = test.ToBankAccount(accountName, accountMoney));
             allAccountNames.Add(accountName);
             return allAccountNames;
         }

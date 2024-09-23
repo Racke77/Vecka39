@@ -12,23 +12,11 @@ namespace Bankomat_2
 {
     public class BankAccount
     {
+        
         private string accountNr;
-        public string AccountNr
-        {
-            get { return accountNr; }
-        }
-        private int accountMoney; //NEVER CALL THIS "moneyAccount" (Deserialize hates that)
-        public int AccountMoney
-        {
-            get { return accountMoney; }
-        }
-
-        [JsonConstructor]
-        public BankAccount(string accountNr, int accountMoney)
-        {
-            this.accountNr = accountNr;
-            this.accountMoney = accountMoney;
-        }
+        public string AccountNr { get; private set; }
+        private int accountMoney;
+        public int AccountMoney { get; private set; }
 
         //the method which changes the money-value on a given account
         public void SetMoney(int value)
@@ -36,4 +24,26 @@ namespace Bankomat_2
             accountMoney += value;
         }
     }
+    public class BankAccountJsonDto
+    {
+        public string? AccountNr { get; set; }
+        public int AccountMoney { get; set; }
+        public static BankAccount ToBankAccount(string accountNr, int accountMoney)
+        {
+            return new BankAccount
+            {
+                AccountNr = accountNr,
+                AccountMoney = accountMoney
+            };
+        }
+        public static BankAccountJsonDto FromBankAccount(BankAccount bankAccount)
+        {
+            return new BankAccountJsonDto
+            {
+                AccountNr = bankAccount.AccountNr,
+                AccountMoney = bankAccount.AccountMoney
+            };
+        }
+    }
+
 }

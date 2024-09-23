@@ -16,16 +16,17 @@ namespace Bankomat_2
             List<string> allAccountNames = new List<string>();
             string loadString;
 
-            try //check if the file exists
+            if (File.Exists("AccountList.json")) //check if the file exists
             {
                 loadString = System.IO.File.ReadAllText("AccountList.json");
             }
-            catch //otherwise create all bank-accounts
+            else //otherwise create all bank-accounts
             {                
                 allAccountNames = InitialAccountNames();
                 bankAccountsInitial = AccountEdit.CreateAllAccounts(allAccountNames);
                 loadString = JsonSerializer.Serialize(bankAccountsInitial);
-                System.IO.File.WriteAllText("AccountList.json", loadString);
+                System.IO.File.WriteAllText("AccountList.tmp.json", loadString); //write to temporary file
+                File.Copy("AccountList.tmp.json", "AccountList.json"); //copy to actual file
             }
             //load the file to the reset List
             List<BankAccount> bankAccounts = JsonSerializer.Deserialize<List<BankAccount>>(loadString) ?? new List<BankAccount>();
