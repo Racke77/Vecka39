@@ -17,6 +17,8 @@ namespace Bankomat_Assignment
 
             //create a new BankAccount-list -> Fill it with the sorted list
             var sortedList = bankAccounts.OrderBy(x => x.AccountNr, StringComparer.Create(svCulture, false)).ToList();
+            Console.WriteLine("The list of accounts is now sorted from (a -> z)");
+            Console.ReadLine();
             return sortedList;
         }
     }
