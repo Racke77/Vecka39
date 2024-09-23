@@ -29,16 +29,17 @@ namespace Bankomat_2
         {
             string loadString = System.IO.File.ReadAllText($@"{fileName}.json"); //load from file
 
-            //convert to JsonDto-list (safety-feature?)
+            //read the string -> convert to jsonDto-List
             List<BankAccountJsonDto> bankAccountJsonDtos = JsonSerializer.Deserialize<List<BankAccountJsonDto>>(loadString) ?? new List<BankAccountJsonDto>();
 
-            //convert the JsonDto-list into a BankAccount-list, by adding them all to an empty list
-            List<BankAccount> bankAccounts = new List<BankAccount>();
-            foreach (BankAccountJsonDto bankAccountJsonDto in bankAccountJsonDtos)
+            //take json-Dto-List and make it into the real BankAccount-list
+            List<BankAccount> loadBankAccounts = new List<BankAccount>();
+            foreach (var item in bankAccountJsonDtos)
             {
-                bankAccounts.Add(new BankAccount (bankAccountJsonDto.AccountNr, bankAccountJsonDto.AccountMoney));
+                BankAccount bankAccount = item.ToBankAccount();
+                loadBankAccounts.Add(bankAccount);
             }
-            return bankAccounts;
+            return loadBankAccounts;
         }
     }
 }

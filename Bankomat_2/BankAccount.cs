@@ -38,12 +38,11 @@ namespace Bankomat_2
     {
         public string AccountNr { get; set; }
         public int AccountMoney { get; set; }
-        public BankAccountJsonDto ToBankAccount()
+        public BankAccount ToBankAccount()
         {
-            return new BankAccountJsonDto
+            return new BankAccount(AccountNr, AccountMoney)
             {
-                AccountNr = AccountNr,
-                AccountMoney = AccountMoney
+
             };
         }
         public static BankAccountJsonDto FromBankAccount(BankAccount bankAccount)
