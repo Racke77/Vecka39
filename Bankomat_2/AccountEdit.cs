@@ -73,7 +73,6 @@ namespace Bankomat_2
         }
         public static List<string> EditSelectedAccount(List<BankAccount> bankAccounts, int indexNr, List<string> allAccountNames)
         {
-
             int menuSelected = Menu.DisplayFoundAccount(bankAccounts, indexNr); 
             switch (menuSelected)
             {

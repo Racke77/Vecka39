@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Bankomat_2
 {
     internal class Input
-    {        
+    {
         public static int NumberInputCatch() //method for try-catching int-inputs
         {
             while (true)
@@ -46,23 +46,20 @@ namespace Bankomat_2
                 else
                 {
                     Console.CursorVisible = false;
-                    Console.WriteLine($"Please make your account-name {nameLength} characters long.");
+                    Console.WriteLine($"Please make your account-name at least {nameLength} characters long.");
                 }
             }
         }
         public static bool YesNoInput() //input yes/no bool
         {
-            while (true)
+            Console.CursorVisible = true;
+            if (Console.ReadLine() == "y" || Console.ReadLine() == "yes")
             {
-                Console.CursorVisible = true;
-                if (Console.ReadLine() == "y" || Console.ReadLine() == "yes")
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
