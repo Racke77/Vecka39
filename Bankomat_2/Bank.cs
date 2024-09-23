@@ -15,17 +15,17 @@ namespace Bankomat_2
             List<BankAccount> bankAccountsInitial = new List<BankAccount>();
             List<string> allAccountNames = new List<string>();
             string loadString;
+            string fileName = "AccountList";
 
-            try //check if the file exists
+            if (File.Exists(@$"{fileName}.json")) //check if the file exists
             {
-                loadString = System.IO.File.ReadAllText("AccountList.json");
+                loadString = MyJsonWriter.LoadFromFile(fileName);
             }
-            catch //otherwise create all bank-accounts
+            else //otherwise create all bank-accounts
             {                
                 allAccountNames = InitialAccountNames();
-                bankAccountsInitial = AccountEdit.CreateAllAccounts(allAccountNames);
-                loadString = JsonSerializer.Serialize(bankAccountsInitial);
-                System.IO.File.WriteAllText("AccountList.json", loadString);
+                bankAccountsInitial = AccountEdit.CreateAllAccounts(allAccountNames);                
+                loadString = MyJsonWriter.WriteToFile(bankAccountsInitial, fileName);
             }
             //load the file to the reset List
             List<BankAccount> bankAccounts = JsonSerializer.Deserialize<List<BankAccount>>(loadString) ?? new List<BankAccount>();
@@ -82,7 +82,8 @@ namespace Bankomat_2
                         allAccountNames = AccountEdit.DeleteAccount(allAccountNames, bankAccounts, Menu.MenuSelection(allAccountNames));
                         break;
                     case 7: //Quit -> 
-                        SaveExit.SaveAndExit(bankAccounts);
+                        MyJsonWriter.WriteToFile(bankAccounts, fileName);
+                        Environment.Exit(1);
                         break;
                 }
             }

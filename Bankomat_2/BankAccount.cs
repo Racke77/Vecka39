@@ -36,4 +36,17 @@ namespace Bankomat_2
             accountMoney += value;
         }
     }
+    public class BankAccountJsonDto
+    {
+        public string AccountNr { get; set; }
+        public int AccountMoney { get; set; }
+        public static BankAccountJsonDto FromBankAccount(BankAccount bankAccount)
+        {
+            return new BankAccountJsonDto
+            {
+                AccountNr = bankAccount.AccountNr,
+                AccountMoney = bankAccount.AccountMoney
+            };
+        }
+    }
 }
