@@ -8,7 +8,7 @@ namespace Bankomat_2
         {
             List<string> actionOptions = new List<string>()
             {
-                "Display all", "View account", "Find account" ,"Deposit to account", "Withdraw from account", "Add new account", "Delete account", "Quit"
+                "Display all", "View account", "Find account" ,"Deposit to account", "Withdraw from account", "Sort accounts", "Add new account", "Delete account", "Quit"
             };
             return MenuSelection(actionOptions);
         }

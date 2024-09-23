@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Bankomat_Assignment;
 
 namespace Bankomat_2
 {
@@ -12,7 +13,6 @@ namespace Bankomat_2
     {
         public static void TheBank()
         {
-            List<BankAccount> bankAccountsInitial = new List<BankAccount>();
             List<string> allAccountNames = new List<string>();
             string loadString;
             string fileName = "AccountList";
@@ -24,7 +24,7 @@ namespace Bankomat_2
             else //otherwise create all bank-accounts
             {                
                 allAccountNames = InitialAccountNames();
-                bankAccountsInitial = AccountEdit.CreateAllAccounts(allAccountNames);                
+                List<BankAccount> bankAccountsInitial = AccountEdit.CreateAllAccounts(allAccountNames);                
                 loadString = MyJsonWriter.WriteToFile(bankAccountsInitial, fileName);
             }
             //load the file to the reset List
@@ -75,13 +75,16 @@ namespace Bankomat_2
                     case 4: //Remove from account -> open a menu for account-names (send Remove)
                         AccountEdit.MoneyEdits(-1, "withdraw", bankAccounts, Menu.MenuSelection(allAccountNames));
                         break;
-                    case 5: //Add new account -> 
+                    case 5: //Sort accounts
+                        bankAccounts = AccountSorter.SortAccounts(bankAccounts);
+                        break;
+                    case 6: //Add new account -> 
                         allAccountNames = AccountEdit.CreateNewAccount(bankAccounts, allAccountNames);
                         break;
-                    case 6: //Delete account ->
+                    case 7: //Delete account ->
                         allAccountNames = AccountEdit.DeleteAccount(allAccountNames, bankAccounts, Menu.MenuSelection(allAccountNames));
                         break;
-                    case 7: //Quit -> 
+                    case 8: //Quit -> 
                         MyJsonWriter.WriteToFile(bankAccounts, fileName);
                         Environment.Exit(1);
                         break;

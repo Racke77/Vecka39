@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Bankomat_2;
 
 namespace Bankomat_2
 {
@@ -23,7 +22,7 @@ namespace Bankomat_2
             }
             string loadString = JsonSerializer.Serialize(listToSave); //serializing the new list
             System.IO.File.WriteAllText($@"{fileName}.tmp.json", loadString); //write to a temp file
-            File.Copy($@"{fileName}.tmp.json", $@"{fileName}.json"); //copy temp file to actual file
+            File.Copy($@"{fileName}.tmp.json", $@"{fileName}.json", true); //copy temp file to actual file
             return loadString;
         }
         public static string LoadFromFile(string fileName)
