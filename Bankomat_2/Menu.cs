@@ -72,7 +72,7 @@ namespace Bankomat_2
             {
                 Console.Clear();
                 Console.CursorVisible = false;
-                Console.WriteLine(bankAccounts[indexNr].AccountNr + bankAccounts[indexNr].AccountMoney.ToString().PadLeft(20) + " SEK");
+                Console.WriteLine(bankAccounts[indexNr].AccountNr.PadRight(10) + bankAccounts[indexNr].AccountMoney.ToString().PadLeft(20) + " SEK");
                 Console.WriteLine();
                 Console.WriteLine();
                 for (int i = 0; i < menuOptions.Count; i++)

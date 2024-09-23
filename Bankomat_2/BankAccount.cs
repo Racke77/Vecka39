@@ -17,13 +17,11 @@ namespace Bankomat_2
         {
             get { return accountNr; }
         }
-        private int accountMoney; //NEVER CALL THIS "moneyAccount" (Deserialize hates that)
+        private int accountMoney;
         public int AccountMoney
         {
             get { return accountMoney; }
         }
-
-        [JsonConstructor]
         public BankAccount(string accountNr, int accountMoney)
         {
             this.accountNr = accountNr;
@@ -40,6 +38,14 @@ namespace Bankomat_2
     {
         public string AccountNr { get; set; }
         public int AccountMoney { get; set; }
+        public BankAccountJsonDto ToBankAccount()
+        {
+            return new BankAccountJsonDto
+            {
+                AccountNr = AccountNr,
+                AccountMoney = AccountMoney
+            };
+        }
         public static BankAccountJsonDto FromBankAccount(BankAccount bankAccount)
         {
             return new BankAccountJsonDto

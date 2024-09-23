@@ -12,19 +12,19 @@ namespace Bankomat_2
         //method for creating all accounts at the start
         public static List<BankAccount> CreateAllAccounts(List<string> accountNames)
         {
-            List<BankAccount> accountNr = new List<BankAccount>(); //create an array to hold all of the objects
+            List<BankAccount> bankAccounts = new List<BankAccount>(); //create an array to hold all of the objects
 
             Random randomMoney = new Random(); //create a random amount of initial money
 
             //go through the entire list and create objects for each installment of the array + random money
             foreach (string accountName in accountNames)
             {
-                accountNr.Add(new BankAccount(accountName, randomMoney.Next(100, 10001)));
+                bankAccounts.Add(new BankAccount(accountName, randomMoney.Next(100, 10001)));
             }
-            return accountNr;
+            return bankAccounts;
         }
         //method for editing the money on the accounts
-        public static void MoneyEdits(int addRemove, string question, List<BankAccount> accountNr, int whichAccount)
+        public static void MoneyEdits(int addRemove, string question, List<BankAccount> bankAccounts, int whichAccount)
         {
             Console.Clear();
             Console.WriteLine($"How much money do you want to {question}?");
@@ -33,7 +33,7 @@ namespace Bankomat_2
             //turning a "normal number" into either positive or negative (add/remove)
             moneyEdit = (moneyEdit * addRemove);
 
-            if (moneyEdit + accountNr[whichAccount].AccountMoney < 0)
+            if (moneyEdit + bankAccounts[whichAccount].AccountMoney < 0)
             {
                 Console.CursorVisible = false;
                 Console.WriteLine("You don't have enough money for that.");
@@ -41,7 +41,7 @@ namespace Bankomat_2
                 return;
             }
             //after checking to make sure that nothing goes wrong -> use method for changing account-money
-            accountNr[whichAccount].SetMoney(moneyEdit);
+            bankAccounts[whichAccount].SetMoney(moneyEdit);
         }
         //CREATE new account
         public static List<string> CreateNewAccount(List<BankAccount> bankAccounts, List<string> allAccountNames)

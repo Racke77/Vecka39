@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Bankomat_Assignment;
 
 namespace Bankomat_2
 {
@@ -14,27 +13,21 @@ namespace Bankomat_2
         public static void TheBank()
         {
             List<string> allAccountNames = new List<string>();
-            string loadString;
+            List<BankAccount> bankAccounts = new List<BankAccount>();
             string fileName = "AccountList";
 
             if (File.Exists(@$"{fileName}.json")) //check if the file exists
             {
-                loadString = MyJsonWriter.LoadFromFile(fileName);
+                bankAccounts = MyJsonWriter.LoadFromFile(fileName); //load from file
+                foreach (var bankAccount in bankAccounts) //update account-names to fit loaded list
+                {
+                    allAccountNames.Add(bankAccount.AccountNr);
+                }
             }
             else //otherwise create all bank-accounts
             {                
                 allAccountNames = InitialAccountNames();
-                List<BankAccount> bankAccountsInitial = AccountEdit.CreateAllAccounts(allAccountNames);                
-                loadString = MyJsonWriter.WriteToFile(bankAccountsInitial, fileName);
-            }
-            //load the file to the reset List
-            List<BankAccount> bankAccounts = JsonSerializer.Deserialize<List<BankAccount>>(loadString) ?? new List<BankAccount>();
-
-            //reset the names to match the Actual Accounts
-            allAccountNames.Clear();
-            for (int i = 0; i < bankAccounts.Count; i++)
-            {
-                allAccountNames.Add(bankAccounts[i].AccountNr);
+                bankAccounts = AccountEdit.CreateAllAccounts(allAccountNames);     
             }
                         
             while (true) //while-loop to stop from escaping the menu
@@ -47,7 +40,7 @@ namespace Bankomat_2
                     case 0: //Display all accounts
                         for (int i = 0; i < bankAccounts.Count; i++)
                         {
-                            Console.Write(bankAccounts[i].AccountNr + bankAccounts[i].AccountMoney.ToString().PadLeft(20) + " SEK");
+                            Console.Write(bankAccounts[i].AccountNr.PadRight(10) + bankAccounts[i].AccountMoney.ToString().PadLeft(20) + " SEK");
                             Console.WriteLine();
                         }
                         Console.ReadLine();
